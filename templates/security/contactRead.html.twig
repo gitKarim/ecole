@@ -1,0 +1,40 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">messages</li>
+          </ol>
+            
+
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    
+                    <h2><i class="fas fa-book-reader"></i>Message de la part de : {{contacts.nom}} {{contacts.prenom}}</h2>
+                   <a style="float:rigth ; " href="mailto:{{contacts.email}}" class="btn_1 gray add-pricing-list-item">Répondre</a>
+                </div>                       
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            {{contacts.message}}
+
+                
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

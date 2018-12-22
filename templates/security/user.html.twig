@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+        <h1>Ajouter un utilisateur</h1>
+        {{ form_start(formulaire)}}
+        {{ form_row(formulaire.username, { 'label' : 'Utilisateur', 'attr':{ 'placeholder':'username'} })}}
+        {{ form_row(formulaire.password, { 'label' : 'Mot de passe', 'attr':{ 'placeholder':'mot de passe'} })}}
+        {{ form_row(formulaire.email, { 'label' : 'Email', 'attr':{ 'placeholder':'email'} })}}
+        {{ form_row(formulaire.roles, { 'label' : 'Roles', 'attr':{ 'placeholder':'role'} })}}
+
+
+        
+        <button type="submit"  class="btn btn-primary">Ajouter</button>
+        {{ form_end(formulaire)}}
+        </div>
+
+{% endblock body %}

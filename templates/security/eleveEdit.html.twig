@@ -1,0 +1,128 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des élèves</li>
+          </ol>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Modifier un élève</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_start(formulaire)}}
+                            {{ form_row(formulaire.imageFile, { 'label' : 'Photo de l\'élève', 'attr':{'class':'form-control', 'type':'image', 'placeholder':'photo'} })}} 
+
+                            {{ form_row(formulaire.nom, { 'label' : 'Nom', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'nom'} })}} 
+                            {{ form_row(formulaire.prenom, { 'label' : 'Prénom', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'prenom'} })}} 
+                            {{ form_row(formulaire.date_naissance, { 'label' : 'date de naisance', 'attr':{'class':'form-control', 'type':'date', 'placeholder':'date de naissance'} })}} 
+                            
+                            {{ form_row(formulaire.adresse, { 'label' : 'Adresse', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'adresse'} })}} 
+                            {{ form_row(formulaire.ville, { 'label' : 'Ville', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'ville'} })}} 
+                           
+                            {{ form_row(formulaire.email, { 'label' : 'Email', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'email'} })}} 
+                            {{ form_row(formulaire.password, { 'label' : 'Password', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'password'} })}} 
+                            
+                            {{ form_row(formulaire.telephone, { 'label' : 'Téléphone', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'téléphone'} })}} 
+                            {{ form_row(formulaire.genre, { 'label' : 'Genre', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'nom'} })}} 
+                            {{ form_row(formulaire.niveau, { 'label' : 'Niveau scolaire', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'nom'} })}} 
+                            {{ form_row(formulaire.representant, { 'label' : 'Representant', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'nom'} })}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><button type="submit" class="btn_1 medium">Modifier</button></p>
+            {{ form_end(formulaire)}}
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Gestion des élèves</h2>
+                </div>                       
+                 <!-- tableau des événements-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des élèves</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Nom & Prénom</th>
+                        
+                        <th>Téléphone</th>
+                        <th>Email</th>
+                        <th>Niveau</th>
+                        <th>Representant</th>
+                        <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <td>Nom & Prénom</td>
+                        <th>Téléphone</th>
+                        <th>Email</th>
+                        <th>Niveau</th>
+                        <th>Representant</th>
+                        <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if eleves is defined %}
+                
+                        {% for eleve in eleves %}
+                    <tr>
+                        <td> <a  href="/administrateur/eleve/read/{{ eleve.id }}"  data-id="{{ eleve.id }}">{{eleve.nom}} {{eleve.prenom}}</a> </td>
+                        <td>{{eleve.telephone}}</td>
+                        <td>{{eleve.email}}</td>
+                        <td>{{eleve.niveau.libelle}}</td> 
+                        <td>{{eleve.representant.nom}}</td> 
+
+                      <td>
+                         <div>
+            <span><a  href="/administrateur/eleve/edit/{{ eleve.id }}"  data-id="{{ eleve.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a> 
+          -<a  href="/administrateur/eleve/read/{{ eleve.representant.id }}"  data-id="{{ eleve.id }}"><i class="fab fa-readme"></i></a> - <a  href="/administrateur/eleve/delete/{{ eleve.id }}"  data-id="{{ eleve.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a> </span>  </td>
+                        </div> 
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun élève n'est trouvé.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des matières-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+
+
+                
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

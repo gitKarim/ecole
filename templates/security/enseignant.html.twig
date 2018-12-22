@@ -1,0 +1,118 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des enseignants</li>
+          </ol>
+        <div class="box_general padding_bottom">
+     <!-- tableau des enseignanst-->
+     <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Liste des enseignants <div class="statsEleves"> Total  : <span class=" text-danger">
+            <strong class="statsDetail"> {{totalEnseignant}}</strong> 
+            
+
+          </span></div></div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                            <th>Nom-Prénom</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                            <th>Télephone</th>
+                            <th>Matière</th>
+                            <th>Niveau</th>
+                            <th>Action</th>
+
+                            
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>Nom-Prénom</th>
+                          <th>Adresse</th>
+                          <th>Ville</th>
+                          <th>Télephone</th>
+                          <th>Matière</th>
+                          <th>Niveau</th>
+                          <th>Action</th>
+                          
+
+
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                          {% if enseignants is defined %}
+                
+                          {% for enseignant in enseignants %}
+                          
+                        <tr>
+                          <td>{{enseignant.nom}} {{enseignant.prenom}}</td>
+                          <td>{{enseignant.adresse}}</td>
+                          <td>{{enseignant.ville}}</td>
+                          
+                          
+                          <td>{{enseignant.telephone}}</td>
+                           <td>{#{{enseignant.matiere}}#}</td> 
+                          <td>{#{{enseignant.niveau}}#}</td>
+                          <td>action</td>
+
+
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                  aucun enseignant n'est trouvé.
+                  {% endif %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                
+              </div>
+        <!-- tableau des enseignanst-->    
+               
+        </div>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Ajouter un enseignant</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                {{ form_start(formulaire)}}
+               
+                 
+                 
+                 {{ form_row(formulaire.nom, { 'label' : 'Nom', 'attr':{ 'class':'form-control','placeholder':'nom'} })}}
+                 {{ form_row(formulaire.prenom, { 'label' : 'Prenom', 'attr':{ 'class':'form-control','placeholder':'prenom'} })}}
+                 {{ form_row(formulaire.adresse, { 'label' : 'Adresse', 'attr':{ 'class':'form-control','placeholder':'adresse'} })}}
+                 {{ form_row(formulaire.ville, { 'label' : 'Ville', 'attr':{ 'class':'form-control','placeholder':'ville'} })}}
+                 {{ form_row(formulaire.date_naissance, { 'label' : 'Date de naissance', 'attr':{ 'class':'form-control','placeholder':'date de naissance'} })}}
+                 {{ form_row(formulaire.genre, { 'label' : 'Genre', 'attr':{ 'class':'form-control','placeholder':'genre'} })}}
+                
+                 {{ form_row(formulaire.password, { 'label' : 'Mot de passe', 'attr':{'class':'form-control', 'placeholder':'mot de passe'} })}}
+                 {{ form_row(formulaire.email, { 'label' : 'Email', 'attr':{ 'class':'form-control','placeholder':'email'} })}}
+                 {{ form_row(formulaire.telephone, { 'label' : 'Numéro de téléphone', 'attr':{'class':'form-control', 'placeholder':'téléphone'} })}}
+                 
+                
+                 {{ form_row(formulaire.matiere, { 'label' : 'Matière', 'attr':{'class':'form-control', 'placeholder':'matière'} })}}
+                 {{ form_row(formulaire.niveau, { 'label' : 'Niveau scolaire', 'attr':{ 'class':'form-control','placeholder':'niveau scolaire'} })}}         
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <p><button type="submit" class="btn_1 medium">Ajouter</button></p>
+            {{ form_end(formulaire)}}
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

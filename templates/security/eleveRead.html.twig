@@ -1,0 +1,150 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Elèves</li>
+          </ol>
+            
+
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    
+                    <h2><i class="fab fa-readme"></i>Fiche de l'élève : {{eleves.nom}} {{eleves.prenom}}</h2> 
+                   
+                </div>                       
+
+                <div class="container">
+                        <div class="row my-2">
+                            <div class="col-lg-8 order-lg-2">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Coordonnées</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" data-target="#classe" data-toggle="tab" class="nav-link">Classe {{eleves.niveau.libelle}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" data-target="#enseignants" data-toggle="tab" class="nav-link">Enseignants</a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a href="" data-target="#representant" data-toggle="tab" class="nav-link">Representant</a>
+                                        </li>
+                                </ul>
+                                <div class="tab-content py-4">
+                                    <div class="tab-pane active" id="profile">
+                                       
+                                        <div class="row">
+                                                <table class="table table-user-information">
+                                                        <tbody>
+                                                          <tr>
+                                                            <td> <h6> Nom & Prenom:</h6></td>
+                                                            <td>{{eleves.nom}} {{eleves.prenom}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                                <td> <h6> Adresse:</h6></td>
+                                                                <td>{{eleves.adresse}} {{eleves.ville}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                                <td> <h6> Email:</h6></td>
+                                                                <td>{{eleves.email}}</td>
+                                                          </tr>
+                                                       
+                                                             <tr>
+                                                                 <tr>
+                                                             <td> <h6> Téléphone:</h6></td>
+                                                            <td>{{eleves.telephone}}</td>
+                                                          </tr>
+                                                            
+                                                            
+                                                               
+                                                          </tr>
+                                                         
+                                                        </tbody>
+                                                      </table>
+                                            
+                                           
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="tab-pane" id="classe">
+                                            <table class="table">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">Photo</th>
+                                                        <th scope="col">Nom & Prenom</th>
+                                                        <th scope="col">Téléphone</th>
+                                                        
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      {% for eleve in elevesParClasse %}
+                                                        <tr>
+
+                                                        <td><img src="{{vich_uploader_asset(eleve, 'imageFile')}}" 
+                                                            width="50%" alt=""></td>
+                                                        <td>{{eleve.nom}} {{eleve.Prenom}}</td>
+                                                        <td>{{eleve.telephone}}</td>
+                                                      </tr>
+{% endfor %}
+                                                    </tbody>
+                                                  </table>
+                                    </div>
+                                    <div class="tab-pane" id="enseignants">
+                                        à faire
+                                    </div>
+                                    <div class="tab-pane" id="representant">
+                                        
+                                                <table class="table table-user-information">
+                                                        <tbody>
+                                                          <tr>
+                                                            <td> <h6> Nom & Prenom:</h6></td>
+                                                            <td>{{eleves.representant.nom}} {{eleves.representant.prenom}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                                <td> <h6> Adresse:</h6></td>
+                                                                <td>{{eleves.representant.adresse}} {{eleves.representant.ville}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                                <td> <h6> Email:</h6></td>
+                                                                <td>{{eleves.representant.email}}</td>
+                                                          </tr>
+                                                       
+                                                             <tr>
+                                                                 <tr>
+                                                             <td> <h6> Téléphone:</h6></td>
+                                                            <td>{{eleves.telephone}}</td>
+                                                          </tr>
+                                                            
+                                                            
+                                                               
+                                                          </tr>
+                                                         
+                                                        </tbody>
+                                                      </table>
+                                   
+                                        
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 order-lg-1 text-center">
+                                    <img src="{{vich_uploader_asset(eleves, 'imageFile')}}" 
+                                    width="50%" alt="">                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

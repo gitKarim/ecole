@@ -1,0 +1,99 @@
+
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">controles d'accés</li>
+          </ol>
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Roles disponibles</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                
+               
+                        <!-- tableau des role-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des roles</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Role</th>
+                      <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if roles is defined %}
+                
+                        {% for role in roles %}
+                    <tr>
+                      <td>{{role.libelle}}</td>
+                      <td>
+                         <div>
+            <span><a  href="/administrateur/role/edit/{{ role.id }}"  data-id="{{ role.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a> 
+          -<a  href="/administrateur/role/delete/{{ role.id }}"  data-id="{{ role.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a> </span>  </td>
+                        </div> 
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun role n'est défini.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des roles-->
+                
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Ajouter un role</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                {{ form_start(formulaire)}}
+                   {{ form_row(formulaire.libelle, { 'attr':{ 'class':'form-control', 'type':'text','placeholder':'role'} })}}
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <p><button type="submit" class="btn_1 medium">Ajouter</button></p>
+            {{ form_end(formulaire)}}
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

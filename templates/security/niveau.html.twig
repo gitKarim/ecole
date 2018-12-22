@@ -1,0 +1,108 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">niveaux scolaires</li>
+          </ol>
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Niveaux scolaires disponibles</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                <!-- tableau des niveaux-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des niveaux</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Niveau</th>
+                      <th>Nombre d'élèves</th>
+                  
+                      <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Niveau</th>
+                  
+                      <th>Nomre d'élèves</th>
+
+                      <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if niveaux is defined %}
+                
+                        {% for niveau in niveaux %}
+                    <tr>
+                      <td><a href="{{path('niveau_detail')}}">{{niveau.libelle}} > <i class="fas fa-columns"></i></a> </td>
+
+                        <td>total </td>
+
+                      <td>
+                        
+                        <span>  <a  href="/administrateur/niveau/edit/{{ niveau.id }}"  data-id="{{ niveau.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a> </span>-
+                        <a  href="/administrateur/niveau/delete/{{ niveau.id }}"  data-id="{{ niveau.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>  </td>
+                        
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun niveau n'est défini.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des niveaus-->
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Ajouter un niveau</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                {{ form_start(formulaire)}}
+                {{ form_row(formulaire.libelle, { 'label' : 'Ajouter un niveau scolaire', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'niveau scolaire'} })}} {{ form_row(formulaire.libelle, { 'attr':{ 'class':'form-control', 'type':'text','placeholder':'niveau'} })}}
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <p><button type="submit" class="btn_1 medium">Ajouter</button></p>
+            {{ form_end(formulaire)}}
+          </div>
+          <!-- /.container-fluid-->
+
+          {# debut recherche par niveau  #}
+          
+          {# fin recherche par niveau  #}
+          
+           </div>
+{% endblock %}

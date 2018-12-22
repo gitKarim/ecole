@@ -1,0 +1,114 @@
+{% extends 'base.html.twig.' %}
+
+{% block title %}Etablissement Scolaire  {% endblock %}
+
+{% block body %}
+<main>
+		<section id="hero_in" class="general">
+				<div class="wrapper">
+				<div class="container">
+					<h1 class="fadeInUp"><span></span>Etablissement scolaire</h1>
+				</div>
+				</div>
+			</section>
+		<!-- /header-video -->
+
+		<ul id="grid_home" class="clearfix">
+			<li>
+				<a href="#0" class="img_container">
+					<img src="http://via.placeholder.com/600x400/ccc/fff/grid_home_1.jpg" alt="">
+					<div class="short_info">
+						<h3><strong>Titre</strong>description</h3>
+						<div><span class="btn_1 rounded">Lire la suite</span></div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#0" class="img_container">
+					<img src="http://via.placeholder.com/600x400/ccc/fff/grid_home_1.jpg" alt="">
+					<div class="short_info">
+						<h3><strong>titre</strong>description</h3>
+						<div><span class="btn_1 rounded">lire la suite</span></div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#0" class="img_container">
+					<img src="http://via.placeholder.com/600x400/ccc/fff/grid_home_1.jpg" alt="">
+					<div class="short_info">
+						<h3><strong>Titre</strong>description</h3>
+						<div><span class="btn_1 rounded">Lire la suite</span></div>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!--/grid_home -->
+
+		<div class="container-fluid margin_120_0" id="first_section">
+			<div class="main_title_2">
+				<span><em></em></span>
+				<h2>Informations et événements scolaires</h2>
+				<p>liste des informations et événements scolaires</p>
+			</div>
+			<div id="reccomended" class="owl-carousel owl-theme">
+					{% if evenements is defined %}
+
+                    {% for evenement in evenements %}
+				<div class="item">
+					<div class="box_grid">
+						<figure>
+							<a href="#0" class="wish_bt"></a>
+							<a href="#">
+								<div class="preview"><span>Afficher </span></div><img src="/img/event.jpg" class="img-fluid" alt=""></a>
+							<div class="price">{{ evenement.date_event | date("d-m-Y") }}</div>
+
+						</figure>
+						<div class="wrapper">
+							<small>Evénement</small>
+							<h3>{{evenement.titre}}</h3>
+							<p>{{evenement.contenu}}</p>
+						</div>
+						<ul>
+							<li><i class="icon_clock_alt"></i> Durée : 1h 30min</li>
+							
+							<li><a href="#">Afficher</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /item -->
+				{% endfor %}
+
+				{% else %}
+					aucun événement n'est défini.
+				{% endif %}
+			</div>
+			<!-- /carousel -->
+			<div class="container">
+				<p class="btn_home_align"><a href="#" class="btn_1 rounded">Afficher tous les événements</a></p>
+			</div>
+			<!-- /container -->
+			<hr>
+		</div>
+		<!-- /container -->
+
+
+
+	
+
+		<div class="call_section">
+			<div class="container clearfix">
+				<div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
+					<div class="block-reveal">
+						<div class="block-vertical"></div>
+						<div class="box_1">
+							<h3>Titre H1</h3>
+							<p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
+							<a href="#0" class="btn_1 rounded">Lire la suite</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/call_section-->
+	</main>    
+{% endblock body %}

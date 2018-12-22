@@ -1,0 +1,123 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Gestion des representants</li>
+          </ol>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Modifier un representant</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_start(formulaire)}}
+                            {{ form_row(formulaire.nom, { 'label' : 'Nom', 'attr':{ 'class':'form-control','placeholder':'nom'} })}}
+                            {{ form_row(formulaire.prenom, { 'label' : 'Prenom', 'attr':{ 'class':'form-control','placeholder':'prenom'} })}}
+                            {{ form_row(formulaire.adresse, { 'label' : 'Adresse', 'attr':{ 'class':'form-control','placeholder':'adresse'} })}}
+                            {{ form_row(formulaire.ville, { 'label' : 'Ville', 'attr':{ 'class':'form-control','placeholder':'ville'} })}}
+                            {{ form_row(formulaire.telephone, { 'label' : 'Date de naissance', 'attr':{ 'class':'form-control','placeholder':'tétéphone'} })}}
+                            {{ form_row(formulaire.genre, { 'label' : 'Genre', 'attr':{ 'class':'form-control','placeholder':'genre'} })}}
+                            {{ form_row(formulaire.email, { 'label' : 'Email', 'attr':{ 'class':'form-control','placeholder':'email'} })}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><button type="submit" class="btn_1 medium">Modifier</button></p>
+            {{ form_end(formulaire)}}
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Gestion des representants</h2>
+                </div>                       
+                 <!-- tableau des representants-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des representants</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                            <th>Nom-Prénom</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Genre</th>
+                            <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                            <th>Nom-Prénom</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Genre</th>
+                            <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if representants is defined %}
+                
+                        {% for representant in representants %}
+                    <tr>
+                            
+                                    <td>{{representant.nom}} {{representant.prenom}}</td>
+                                    <td>{{representant.adresse}}</td>
+                                    <td>{{representant.ville}}</td>
+                                    <td>{{representant.telephone}}</td>
+                                    <td>{{representant.email}}</td>
+                                    <td>{{representant.genre}}</td>
+                                    <td>
+                              
+                                    <span>   <a  href="/administrateur/representant/edit/{{ representant.id }}"  data-id="{{ representant.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a>  </span>-
+                                    <a  href="/administrateur/representant/read/{{representant.id }}"  data-id="{{ representant.id }}"><i class="fab fa-readme"></i></a> - <a  href="/administrateur/representant/delete/{{ representant.id }}"  data-id="{{ representant.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>  </td> 
+
+                      
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun élève n'est trouvé.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des matières-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+
+
+                
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

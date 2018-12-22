@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+         <!-- Favicons-->
+  <link rel="shortcut icon" href="/admin/img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/admin/img/apple-touch-icon-57x57-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/admin/img/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/admin/img/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/admin/img/apple-touch-icon-144x144-precomposed.png">
+	
+  <!-- Bootstrap core CSS-->
+  <link href="/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Main styles -->
+  <link href="/admin/css/admin.css" rel="stylesheet">
+  <!-- Icon fonts-->
+  <link href="/admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Plugin styles -->
+  <link href="/admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Your custom styles -->
+  <link href="/admin/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+ {% block stylesheets %}
+
+<style>
+.fa-trash{
+ color: darkred;
+  }
+  .tital{ font-size:16px; font-weight:500;}
+ .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+ .detail{
+     display: inline ;
+ }
+ .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+ .fa-male {
+     color:#00b1cf ;
+ }
+ .fa-female {
+    color:rosybrown ;
+}
+ .statsEleves {
+   float: right ;
+   display: block ;
+ }
+ .statsDetail{
+     margin: 10px;
+     background-color: antiquewhite ;
+     border: 5px solid antiquewhite ;
+     border-radius: 5px ;
+
+ }
+ .paginationCenter{
+     margin: auto ;
+         }
+ </style>
+
+  {% endblock %}
+
+    </head>
+<body class="fixed-nav sticky-footer" id="page-top">
+       <!-- le menu  -->
+ {% include 'administrateur/header.html.twig' %}
+         <!-- fin me menu  -->   
+         
+         {% include 'administrateur/footer.html.twig' %}
+    <div id="page">
+        {% block body %}
+        
+        
+        {% endblock %}
+    </div>
+
+</body>
+ 
+{% block javascripts %}
+
+     
+    <script type="text/javascript" src="/fosckeditor/ckeditor.js"></script>
+
+
+         <!-- Bootstrap core JavaScript-->
+    <script src="/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="/admin/vendor/chart.js/Chart.js"></script>
+    <script src="/admin/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/admin/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="/admin/vendor/jquery.selectbox-0.2.js"></script>
+	<script src="/admin/vendor/retina-replace.min.js"></script>
+	<script src="/admin/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/admin/js/admin.js"></script>
+	<!-- Custom scripts for this page-->
+    <script src="/admin/js/admin-charts.js"></script>
+{% endblock %}        
+</html>

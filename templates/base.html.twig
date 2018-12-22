@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>{% block title %}Bienvenue{% endblock %}</title>
+    
+    <link href="/css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+	<link href="/css/vendors.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+   
+       
+    {% block stylesheets %} {% endblock %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+<body>
+
+    <div id="page">
+        {% block body %} {% endblock %}
+    </div>
+          
+              
+        <!-- le menu  -->
+    {% include 'home/header.html.twig' %}
+         <!-- fin me menu  -->    
+        <!-- le menu  -->
+    {% include 'home/footer.html.twig' %}
+     <!-- fin me menu  -->
+    
+
+        
+       
+</body>
+ 
+{% block javascripts %}
+         
+            <!-- COMMON SCRIPTS -->
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script src="/js/common_scripts.js"></script>
+    <script src="/js/main.js"></script>
+	<script src="/assets/validate.js"></script>
+	<!-- Modernizr -->
+	<script src="/js/modernizr.js"></script>
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="/js/jquery.cookiebar.js"></script>
+	<script>
+		$(document).ready(function() {
+			'use strict';
+			$.cookieBar({
+				fixed: true
+			});
+		});
+	</script>
+{% endblock %}        
+</html>

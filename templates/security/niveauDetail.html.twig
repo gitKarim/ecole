@@ -1,0 +1,93 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Composition des classes</li>
+          </ol>
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Compositions des classes</h2>
+                </div>
+                
+                   {% for niveau in niveaux %}
+                     {{ dump(niveau) }}
+                <div class="card mb-3">
+                    <div class="card-header">
+                      <i class="fa fa-table"></i> Classe {{niveau.libelle}} </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Photo</th>
+                              <th>Nom &amp; Prénom</th>
+                              <th>Téléphone</th>
+                              <th>Email</th>
+                               <th>Representant</th>
+                              <th>Action</th>
+        
+        
+                        
+                            </tr>
+                          </thead>
+                          <tfoot>
+                            <tr>
+                              <th>Photo</th>
+                             <th>Nom &amp; Prénom</th>
+                              <th>Téléphone</th>
+                              <th>Email</th>
+                               <th>Representant</th>
+                              <th>Action</th>
+        
+            
+                            </tr>
+                          </tfoot>
+                          <tbody>
+                                {% for eleve in elevesParClasse %}
+                                  
+                                                
+                            {#<tr>#}
+                              {#<td>ici photo</td>#}
+                              {#<td> <i class="fas fa-address-card"></i> &gt; <a href="/administrateur/eleve/read/{{eleve.id}}" data-id="6">{{eleve.nom}}{{eleve.prenom}}</a> </td>#}
+                              {#<td>{{eleve.telephone}}</td>#}
+                              {#<td>{{eleve.email}}</td>#}
+                               {#<td><i class="fas fa-id-card-alt"></i> &gt; <a href="/administrateur/representant/read/{{eleve.representant.id}}" data-id="6">{{eleve.representant.nom}}</a></td> #}
+                              {#<td>#}
+                                 {#<div>#}
+                                        {##}
+                                {#<span>   <a href="/administrateur/eleve/edit/6" data-id="6"><i class="fas fa-edit" aria-hidden="true"></i></a>  </span>-#}
+                                {#<a href="/administrateur/eleve/read/6" data-id="6"><i class="fab fa-readme"></i></a> - <a href="/administrateur/eleve/delete/6" data-id="6"><i class="fa fa-trash" aria-hidden="true"></i>#}
+                                {#</a>  </div></td>#}
+                                 {##}
+                            {#</tr>#}
+                             {% endfor %}                     
+                           
+                                                 
+                           
+                                            
+                             
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  {% endfor %}            
+                            
+                        </div>
+                   
+           
+          </div>
+    
+
+          
+          
+           </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Evénements </li>
+          </ol>
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Liste des événements</h2>
+                </div> <!-- tableau des événements-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des événements</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>événement</th>
+                        <th>date d'événement</th>
+                        <th>lieu</th>
+                        <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <th>événement</th>
+                        <th>date d'événement</th>
+                        <th>lieu</th>
+                        <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if evenements is defined %}
+                
+                        {% for evenement in evenements %}
+                    <tr>
+                        <td>{{evenement.titre}}</td>
+                        <td>{{ evenement.date_event | date("d-m-Y") }}</td>
+                        <td>{{evenement.lieu}}</td>
+                      <td>
+                         <div>
+                        <span>   <a  href="/administrateur/evenement/edit/{{ evenement.id }}"  data-id="{{ evenement.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a>  </span>-<a  href="/administrateur/evenement/delete/{{ evenement.id }}"  data-id="{{ evenement.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>  </td>
+                        </div> 
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun événement n'est défini.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+          </div>
+    <!-- tableau des événements-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+               
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Ajouter un événement</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                {{ form_start(formulaire)}}
+                {{ form_row(formulaire.titre, { 'label' : 'titre de l\'événement', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'titre'} })}} 
+                {{ form_row(formulaire.contenu, { 'label' : 'contenu', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'contenu'} })}} 
+                {{ form_row(formulaire.lieu, { 'label' : 'lieu', 'attr':{'class':'form-control', 'type':'text', 'placeholder':'lieu'} })}} 
+                {{ form_row(formulaire.date_event, { 'label' : 'date d\'événement', 'attr':{'class':'form-control', 'type':'date', 'placeholder':'date d\'événement'} })}} 
+                        
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <p><button type="submit" class="btn_1 medium">Ajouter</button></p>
+            {{ form_end(formulaire)}}
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

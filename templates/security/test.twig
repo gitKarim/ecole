@@ -1,0 +1,42 @@
+<div id="login">
+		<aside>
+			<figure>
+				<a href="index.html"><img src="img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+			</figure>
+			<form method="POST" autocomplete="off">
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+				<div class="form-group">
+
+					
+
+					<span class="input">
+					<input class="input_field" type="text" value="{{ last_username }}" name="username" id="inputUsername">
+						<label class="input_label">
+						<span class="input__label-content">Identifiant</span>
+					</label>
+					</span>
+
+					
+
+					<span class="input">
+					<input name="password" id="inputPassword" class="input_field" type="password" id="password1">
+						<label class="input_label">
+						<span class="input__label-content">Mot de passe</span>
+					</label>
+					</span>
+
+					<input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+					
+					<div id="pass-info" class="clearfix"></div>
+				</div>
+				<a type="submit" href="#0" class="btn_1 rounded full-width add_top_30">Register to Udema</a>
+				<div class="text-center add_top_10">Vous avez oublié votre mode passe? <strong><a href="login.html">Se connecter</a></strong></div>
+			</form>
+			<div class="copy">© 2017 Udema</div>
+		</aside>
+	</div>
+	<!-- /login -->

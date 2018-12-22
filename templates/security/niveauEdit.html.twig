@@ -1,0 +1,99 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Niveaux scolaires</li>
+          </ol>
+            <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Modifier un niveau scolaire</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_start(formulaire)}}
+                            {{ form_row(formulaire.libelle, { 'attr':{ 'class':'form-control', 'type':'text','placeholder':'niveau'} })}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p><button type="submit" class="btn_1 medium">Modifier</button></p>
+            {{ form_end(formulaire)}}
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Liste des niveaux scolaires</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+
+                        <!-- tableau des niveau-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des niveaux scolaires</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Niveau</th>
+                      <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Niveau</th>
+                      <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if niveaux is defined %}
+                
+                        {% for niveau in niveaux %}
+                    <tr>
+                      <td>{{niveau.libelle}}</td>
+                      <td>
+                         <div>
+            <span><a  href="/administrateur/niveau/edit/{{ niveau.id }}"  data-id="{{ niveau.id }}"><i class="fas fa-edit" aria-hidden="true"></i></a> 
+          -<a  href="/administrateur/niveau/delete/{{ niveau.id }}"  data-id="{{ niveau.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a> </span>  </td>
+                        </div> 
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun niveaux n'est défini.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des niveaux-->
+                
+                            
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

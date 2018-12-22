@@ -1,0 +1,55 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{path('administrateur')}}">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Representant</li>
+          </ol>
+            
+
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    
+                    <h2><i class="fab fa-readme"></i>Fiche du representant : {{representants.nom}} {{representants.prenom}}</h2>
+                   
+                </div>                       
+
+                <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <td> <h6> Nom & Prenom:</h6></td>
+                            <td>{{representants.nom}} {{representants.prenom}}</td>
+                          </tr>
+                          <tr>
+                                <td> <h6> Adresse:</h6></td>
+                                <td>{{representants.adresse}} {{representants.ville}}</td>
+                          </tr>
+                          <tr>
+                                <td> <h6> Email:</h6></td>
+                                <td>{{representants.email}}</td>
+                          </tr>
+                       
+                             <tr>
+                                 <tr>
+                             <td> <h6> Téléphone:</h6></td>
+                            <td>{{representants.telephone}}</td>
+                          </tr>
+                            
+                            
+                               
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+             </div>
+
+          </div>
+          <!-- /.container-fluid-->
+           </div>
+{% endblock %}

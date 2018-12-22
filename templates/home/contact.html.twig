@@ -1,0 +1,118 @@
+{% extends 'base.html.twig.' %}
+
+{% block title %}Etablissement Scolaire  {% endblock %}
+
+{% block body %}
+<main>
+		<section id="hero_in" class="contacts">
+			<div class="wrapper">
+				<div class="container">
+					<h1 class="fadeInUp"><span></span>Contactez-Nous</h1>
+				</div>
+			</div>
+		</section>
+		<!--/hero_in-->
+
+		<div class="contact_info">
+			<div class="container">
+				<ul class="clearfix">
+					<li>
+                            <i class="fas fa-map-marker-alt"></i>
+						<h4>Adresse</h4>
+						<span>64 rue sully<br>21000 Dijon</span>
+					</li>
+					<li>
+                            <i class="far fa-envelope-open"></i>
+						<h4>Adresse mail</h4>
+						<span>Etablissement@mail.com - infos@mail.com<br><small>Du lundi au vendredi 9h - 17h</small></span>
+
+					</li>
+					<li>
+                            <i class="fas fa-mobile-alt"></i>
+						<h4>Téléphone</h4>
+						<span>03.80.00.00.00 - 03.80.00.00.00<br><small>Du lundi au vendredi 9h - 17h</small></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--/contact_info-->
+
+		<div class="bg_color_1">
+			<div class="container margin_120_95">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="map_contact">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2704.8857029035867!2d5.066553915114949!3d47.31657137916648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29e6cde957c59%3A0x6822dec188732e28!2s6+Rue+Sully%2C+21000+Dijon!5e0!3m2!1sfr!2sfr!4v1543577572575" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+						<!-- /map -->
+					</div>
+					<div class="col-lg-6">
+						<h4>Envoyer un message</h4>
+						<p>Veuillez remplir le formulaire ci-dessous.</p>
+						<div id="message-contact"></div>
+						
+							<div class="row">
+								<div class="col-md-6">
+									<span class="input">
+                                        
+                                        {{ form_start(formulaire)}}
+                {{ form_row(formulaire.nom, { 'attr':{'class':'input_field', 'type':'text', 'placeholder':'nom'} })}} 
+										<label class="input_label">
+											<span class="input__label-content">Votre nom</span>
+										</label>
+									</span>
+								</div>
+								<div class="col-md-6">
+									<span class="input">
+                                            {{ form_row(formulaire.prenom, { 'label' : 'prénom', 'attr':{'class':'input_field', 'type':'text', 'placeholder':'prénom'} })}}
+										<label class="input_label">
+											<span class="input__label-content">Votre prénom</span>
+										</label>
+									</span>
+								</div>
+							</div>
+							<!-- /row -->
+							<div class="row">
+								<div class="col-md-6">
+									<span class="input">
+                                            {{ form_row(formulaire.email, { 'label' : 'email', 'attr':{'class':'input_field', 'type':'text', 'placeholder':'email'} })}}
+										<label class="input_label">
+											<span class="input__label-content">Votre mail</span>
+										</label>
+									</span>
+								</div>
+								<div class="col-md-6">
+									<span class="input">
+										{{ form_row(formulaire.telephone, { 'label' : 'téléphone', 'attr':{'class':'input_field', 'type':'text', 'placeholder':'téléphone'} })}}
+										<label class="input_label">
+											<span class="input__label-content">Numéro de téléphone</span>
+										</label>
+									</span>
+								</div>
+							</div>
+							<!-- /row -->
+							<span class="input">
+									{{ form_row(formulaire.message, { 'label' : 'message', 'attr':{'class':'input_field', 'type':'text', 'placeholder':'message'} })}}
+									<label class="input_label">
+										<span class="input__label-content">Votre message</span>
+									</label>
+							</span>
+							{# <span class="input">
+									<input class="input_field" type="text" id="verify_contact" name="verify_contact">
+									<label class="input_label">
+									<span class="input__label-content">Vous ? 3 + 1 =</span>
+									</label>
+							</span> #}
+                            <p class="add_top_30"><input type="submit" value="Envoyer" class="btn_1 rounded" id="submit-contact"></p>
+                            {{ form_end(formulaire)}}
+						
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /bg_color_1 -->
+	</main>
+	<!--/main-->   
+{% endblock body %}

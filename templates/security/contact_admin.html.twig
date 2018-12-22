@@ -1,0 +1,75 @@
+{% extends 'base.admin.html.twig' %}
+{% block title %}titre{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Tableau de bord</a>
+            </li>
+            <li class="breadcrumb-item active">Messages </li>
+          </ol>
+          <div class="box_general padding_bottom">
+                <div class="header_box version_2">
+                    <h2><i class="fa fa-file"></i>Liste des messages</h2>
+                </div> <!-- tableau des événements-->
+      <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Liste des messages</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                       
+                        <th>nom - prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Action</th>
+
+
+                
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        
+                        <th>nom - prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Action</th>
+
+    
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                        {% if contacts is defined %}
+                
+                        {% for contact in contacts %}
+                    <tr>
+                        <td>{{contact.nom}} - {{contact.prenom}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.telephone}}</td>
+                    
+                      <td><span>   <a  href="/administrateur/contact/read/{{ contact.id }}"  data-id="{{ contact.id }}"><i class="fas fa-book-open"></i></a>  </span>
+                        </a>  </td>
+                         
+                    </tr>
+                    {% endfor %}
+                
+                 {% else %}
+                  aucun message n'est défini.
+                  {% endif %}
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">ici date de mise à jour</div>
+          </div>
+    <!-- tableau des événements-->
+                </div>
+           
+{% endblock %}
