@@ -21,8 +21,8 @@ class AdministrateurController extends AbstractController
     {
     // nombe total des élèves
         $queryBuilder = $eleveRepository->createQueryBuilder('n');
-        $queryBuilder->select('COUNT(eleve.nom)')
-                             ->from(Eleve::class, 'eleve');
+        $queryBuilder->select('COUNT(n.nom)') ;
+                            //  ->from(Eleve::class, 'eleve');
         $totalEleves = $queryBuilder->getQuery()->getSingleScalarResult();  
         
         // nombe total des enseignants
